@@ -2,9 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class TankFrame extends Frame {
-    int x=200,y = 200;
-    Dir dir = Dir.DOWN;
-    private static final int SPEED = 10;
+    Tank tank = new Tank(200,200,Dir.DOWN);
+    Bullet bullet = new Bullet(300,300,Dir.DOWN);
     public TankFrame(){
         // 设置大小
         setSize(600,800);
@@ -23,28 +22,8 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g) {
-        System.out.println(dir);
-        g.fillRect(x,y,50,50);
-        switch (dir){
-            case LEFT:
-                x -= SPEED;
-                System.out.println(x);
-                break;
-            case RIGHT:
-                x += SPEED;
-                System.out.println(x);
-                break;
-            case UP:
-                y -= SPEED;
-                System.out.println(x);
-                break;
-            case DOWN:
-                y += SPEED;
-                System.out.println(x);
-                break;
-            default:
-                break;
-        }
+        tank.paint(g);
+        bullet.paint(g);
     }
 
     class MyKeyLitener extends KeyAdapter {
@@ -105,17 +84,22 @@ public class TankFrame extends Frame {
         }
 
         private void setMainTankDir() {
-            if (bu) {
-                dir = Dir.UP;
-            }
-            if (br) {
-                dir = Dir.RIGHT;
-            }
-            if (bd) {
-                dir = Dir.DOWN;
-            }
-            if (bl) {
-                dir = Dir.LEFT;
+            if (!bl && !bd && !br && !bu) {
+                tank.setMoving(false);
+            }else {
+                tank.setMoving(true);
+                if (bu) {
+                    tank.setDir(Dir.UP);
+                }
+                if (br) {
+                    tank.setDir(Dir.RIGHT);
+                }
+                if (bd) {
+                    tank.setDir(Dir.DOWN);
+                }
+                if (bl) {
+                    tank.setDir(Dir.LEFT);
+                }
             }
         }
     }
