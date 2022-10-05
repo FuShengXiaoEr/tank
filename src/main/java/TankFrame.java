@@ -2,11 +2,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class TankFrame extends Frame {
-    Tank tank = new Tank(200,200,Dir.DOWN);
+    Tank tank = new Tank(200,200,Dir.DOWN,this);
     Bullet bullet = new Bullet(300,300,Dir.DOWN);
+    private static final int WIDTH = 600;
+    private static final int HEIGHT = 800;
     public TankFrame(){
         // 设置大小
-        setSize(600,800);
+        setSize(WIDTH,HEIGHT);
         // 不允许修改窗口
         setResizable(false);
         setTitle("tank war");
@@ -77,6 +79,8 @@ public class TankFrame extends Frame {
                 case KeyEvent.VK_DOWN:
                     bd = false;
                     break;
+                case KeyEvent.VK_CONTROL:
+                    tank.fire();
                 default:
                     break;
             }
@@ -103,4 +107,20 @@ public class TankFrame extends Frame {
             }
         }
     }
+// 修复屏幕闪烁
+//    Image image = null;
+//    @Override
+//    public void update(Graphics g) {
+//        if (image == null) {
+//            image = this.createImage(WIDTH,HEIGHT);
+//        }
+//        Graphics graphics = image.getGraphics();
+//        Color color = g.getColor();
+//        g.setColor(Color.BLACK);
+//        g.fillRect(0,0,WIDTH,HEIGHT);
+//        g.setColor(color);
+//        paint(graphics);
+//        g.drawImage(image,0,0,null);
+//
+//    }
 }
