@@ -1,11 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
     Tank tank = new Tank(200,200,Dir.DOWN,this);
-    Bullet bullet = new Bullet(300,300,Dir.DOWN);
-    private static final int WIDTH = 600;
-    private static final int HEIGHT = 800;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 800;
+    List<Bullet> bulletList = new ArrayList<Bullet>();
     public TankFrame(){
         // 设置大小
         setSize(WIDTH,HEIGHT);
@@ -24,8 +26,11 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g) {
+        g.drawString("现在有"+bulletList.size()+"子弹",10,60);
         tank.paint(g);
-        bullet.paint(g);
+        for (int i = 0 ;i < bulletList.size();i++ ) {
+            bulletList.get(i).paint(g);
+        }
     }
 
     class MyKeyLitener extends KeyAdapter {
