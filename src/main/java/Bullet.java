@@ -18,10 +18,20 @@ public class Bullet {
         if (!isLive){
             tankFrame.bulletList.remove(this);
         }
-        Color color = g.getColor();
-        g.setColor(Color.RED);
-        g.fillOval(x,y,WIDTH,HEIGHT);
-        g.setColor(color );
+        switch (dir) {
+            case LEFT:
+                g.drawImage(ResourceMgr.bulleteL,x,y,null);
+                break;
+            case RIGHT:
+                g.drawImage(ResourceMgr.bulleteR,x,y,null);
+                break;
+            case DOWN:
+                g.drawImage(ResourceMgr.bulleteD,x,y,null);
+                break;
+            case UP:
+                g.drawImage(ResourceMgr.bulleteU,x,y,null);
+                break;
+        }
         move();
     }
 
