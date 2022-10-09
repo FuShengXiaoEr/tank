@@ -4,7 +4,8 @@ public class Bullet {
     private static final int SPEED = 10;
     private int x , y ;
     private Dir dir;
-    private int HEIGHT = 30,WIDTH = 30;
+    public static int HEIGHT = ResourceMgr.bulleteD.getHeight();
+    public static int WIDTH = ResourceMgr.bulleteD.getWidth();
     private boolean isLive = true;
     private TankFrame tankFrame;
     public Bullet(int x,int y,Dir dir,TankFrame tankFrame){

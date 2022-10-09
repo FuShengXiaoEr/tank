@@ -7,6 +7,8 @@ public class Tank {
     private static final int SPEED = 10;
     private boolean moving = false;
     private TankFrame tankFrame;
+    private static int HEIGHT = ResourceMgr.tankD.getHeight();
+    private static int WIDTH = ResourceMgr.tankD.getWidth();
     public Tank(int x,int y,Dir dir,TankFrame tankFrame){
         this.x =x;
         this.y = y;
@@ -91,6 +93,8 @@ public class Tank {
     }
 
     public void fire() {
-        tankFrame.bulletList.add(new Bullet(this.x,this.y,this.dir,this.tankFrame));
+        int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
+        int by = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
+        tankFrame.bulletList.add(new Bullet(bx,by,this.dir,this.tankFrame));
     }
 }
