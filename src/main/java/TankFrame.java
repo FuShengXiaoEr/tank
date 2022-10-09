@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TankFrame extends Frame {
-    Tank tank = new Tank(200,200,Dir.DOWN,this);
+    Tank tank = new Tank(200,400,Dir.DOWN,this);
     public static final int WIDTH = 600;
     public static final int HEIGHT = 800;
     List<Bullet> bulletList = new ArrayList<Bullet>();
+    List<Tank> enemies = new ArrayList<>();
     public TankFrame(){
         // 设置大小
         setSize(WIDTH,HEIGHT);
@@ -30,6 +31,9 @@ public class TankFrame extends Frame {
         tank.paint(g);
         for (int i = 0 ;i < bulletList.size();i++ ) {
             bulletList.get(i).paint(g);
+        }
+        for (int i = 0; i < enemies.size(); i++) {
+            enemies.get(i).paint(g);
         }
     }
 
