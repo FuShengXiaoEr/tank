@@ -28,12 +28,20 @@ public class TankFrame extends Frame {
     @Override
     public void paint(Graphics g) {
         g.drawString("现在有"+bulletList.size()+"子弹",10,60);
+        g.drawString("现在有"+enemies.size()+"敌人",10,60);
         tank.paint(g);
         for (int i = 0 ;i < bulletList.size();i++ ) {
             bulletList.get(i).paint(g);
         }
         for (int i = 0; i < enemies.size(); i++) {
             enemies.get(i).paint(g);
+        }
+        // 检查子弹和坦克是否相撞
+        for (int i = 0; i < bulletList.size(); i++) {
+            for (int j = 0; j < enemies.size(); j++) {
+                bulletList.get(i).collideWith(enemies.get(j));
+            }
+            
         }
     }
 
