@@ -19,7 +19,7 @@ public class T {
 //        });
         TankFrame tankFrame = new TankFrame();
         for (int i = 0;i < 5 ;i++){
-            tankFrame.enemies.add(new Tank(50+i*30,200,Dir.DOWN,tankFrame));
+            tankFrame.enemies.add(new Tank(50+i*60,200,Dir.DOWN,Group.BAD,tankFrame));
         }
         while(true) {
             Thread.sleep(50);
