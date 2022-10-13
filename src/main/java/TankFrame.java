@@ -36,7 +36,6 @@ public class TankFrame extends Frame {
             bulletList.get(i).paint(g);
         }
         for (int i = 0; i < enemies.size(); i++) {
-            System.out.println("di fang tank");
             enemies.get(i).paint(g);
         }
         explode.paint(g);

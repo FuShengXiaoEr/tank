@@ -68,8 +68,8 @@ public class Bullet {
             default:
                 break;
         }
-        rectangle.x = x;
-        rectangle.y = y;
+        rectangle.x = this.x;
+        rectangle.y = this.y;
         if (x < 0 || y < 0 || x > TankFrame.WIDTH || y > TankFrame.HEIGHT) {
             living = false;
         }
@@ -79,7 +79,8 @@ public class Bullet {
         if (this.group == tank.getGroup()) {
             return;
         }
-        if (rectangle.intersects(tank.rectangle) ) {
+
+        if (this.rectangle.intersects(tank.rectangle) ) {
             tank.die();
             this.die();
         }

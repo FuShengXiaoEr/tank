@@ -20,6 +20,11 @@ public class Tank {
         this.dir = dir;
         this.tankFrame = tankFrame;
         this.group = group;
+
+        rectangle.x = this.x;
+        rectangle.y = this.y;
+        rectangle.width = WIDTH;
+        rectangle.height = HEIGHT;
     }
 
     public Group getGroup() {
@@ -93,15 +98,12 @@ public class Tank {
         switch (dir){
             case LEFT:
                 x -= SPEED;
-                System.out.println(x);
                 break;
             case RIGHT:
                 x += SPEED;
-                System.out.println(x);
                 break;
             case UP:
                 y -= SPEED;
-                System.out.println(y);
                 break;
             case DOWN:
                 y += SPEED;
@@ -129,9 +131,9 @@ public class Tank {
         }else if (this.y < 30) {
             y = 30;
         }else if (this.x > TankFrame.WIDTH-Tank.WIDTH) {
-            x = TankFrame.WIDTH;
+            x = TankFrame.WIDTH - Tank.WIDTH;
         }else if (this.y > TankFrame.HEIGHT-Tank.HEIGHT){
-            y = TankFrame.HEIGHT;
+            y = TankFrame.HEIGHT - Tank.HEIGHT;
         }
     }
 
