@@ -41,11 +41,11 @@ public class TankFrame extends Frame {
         }
         explode.paint(g);
         // 检查子弹和坦克是否相撞
-//        for (int i = 0; i < bulletList.size(); i++) {
-//            for (int j = 0; j < enemies.size(); j++) {
-//                bulletList.get(i).collideWith(enemies.get(j));
-//            }
-//        }
+        for (int i = 0; i < bulletList.size(); i++) {
+            for (int j = 0; j < enemies.size(); j++) {
+                bulletList.get(i).collideWith(enemies.get(j));
+            }
+        }
     }
 
     class MyKeyLitener extends KeyAdapter {

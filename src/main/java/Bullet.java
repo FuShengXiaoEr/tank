@@ -9,12 +9,17 @@ public class Bullet {
     private boolean living = true;
     private TankFrame tankFrame;
     private Group group = Group.BAD;
+    Rectangle rectangle = new Rectangle();
     public Bullet(int x,int y,Dir dir,Group group,TankFrame tankFrame){
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.tankFrame = tankFrame;
         this.group = group;
+        rectangle.x = this.x;
+        rectangle.y = this.y;
+        rectangle.width = WIDTH;
+        rectangle.height = HEIGHT;
     }
 
     public void setGroup(Group group) {
@@ -63,6 +68,8 @@ public class Bullet {
             default:
                 break;
         }
+        rectangle.x = x;
+        rectangle.y = y;
         if (x < 0 || y < 0 || x > TankFrame.WIDTH || y > TankFrame.HEIGHT) {
             living = false;
         }
@@ -72,9 +79,7 @@ public class Bullet {
         if (this.group == tank.getGroup()) {
             return;
         }
-        Rectangle rectangle = new Rectangle(this.x, this.y, WIDTH, HEIGHT);
-        Rectangle rectangle1 = new Rectangle(tank.x, tank.y, Tank.WIDTH, Tank.HEIGHT);
-        if (rectangle.intersects(rectangle1) ) {
+        if (rectangle.intersects(tank.rectangle) ) {
             tank.die();
             this.die();
         }
